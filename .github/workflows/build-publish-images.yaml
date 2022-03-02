@@ -80,7 +80,7 @@ jobs:
       # of image tags and image labels that we can pass we build it.
       #
       # The labels are useful to couple the container as presented by ghcr.io with this GitHub
-      # repository for example. See
+      # repository and describe what commit it was associated with etc. See
       # https://docs.github.com/en/packages/learn-github-packages/connecting-a-repository-to-a-package#connecting-a-repository-to-a-container-image-using-the-command-line
       #
       # For more details see https://github.com/docker/metadata-action
