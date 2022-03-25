@@ -6,12 +6,12 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --no-cache-dir \
-    aiohttp==3.8.1 \
+    aiohttp \
     colorlog \
     cryptography \
-    traitlets==5.1.1 \
+    traitlets \
     pyyaml \
-    kubernetes-asyncio==18.20.0
+    kubernetes-asyncio
 
 
 
