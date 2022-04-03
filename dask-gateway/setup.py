@@ -9,13 +9,19 @@ with open(os.path.join(here, "dask_gateway", "_version.py")) as f:
 
 # NOTE: changes to the dependencies here must also be reflected
 # in ../dev-environment.yaml
-install_requires = ["aiohttp", "dask>=2.2.0", "distributed>=2.2.0", "tornado"]
+install_requires = [
+    "aiohttp",
+    "dask >= 2.2.0",
+    "distributed >= 2.2.0",
+    "pyyaml",
+    "tornado",
+]
 
 extras_require = {
     "kerberos": [
         'pykerberos;platform_system!="Windows"',
         'winkerberos;platform_system=="Windows"',
-    ]
+    ],
 }
 
 setup(
