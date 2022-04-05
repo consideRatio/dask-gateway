@@ -1023,38 +1023,25 @@ class KubeController(KubeBackendAndControllerMixin, Application):
 
     def get_scheduler_command(self, namespace, cluster_name, config):
         return config.scheduler_cmd + [
-            "--protocol",
-            "tls",
-            "--host",
-            "",
-            "--port",
-            "8786",
-            "--dashboard-address",
-            ":8787",
-            "--dg-api-address",
-            ":8788",
-            "--preload",
-            "dask_gateway.scheduler_preload",
-            "--dg-heartbeat-period",
-            "0",
-            "--dg-adaptive-period",
-            str(config.adaptive_period),
-            "--dg-idle-timeout",
-            str(config.idle_timeout),
+            "--protocol=tls",
+            "--host=",
+            "--port=8786",
+            "--dashboard-address=:8787",
+            "--dg-api-address=:8788",
+            "--preload=dask_gateway.scheduler_preload",
+            "--dg-heartbeat-period=0",
+            f"--dg-adaptive-period={config.adaptive_period}",
+            f"--dg-idle-timeout={config.idle_timeout}",
         ]
 
     def get_worker_command(self, namespace, cluster_name, config):
         service_name = self.make_service_name(cluster_name)
         return config.worker_cmd + [
             f"tls://{service_name}.{namespace}:8786",
-            "--dashboard-address",
-            ":8787",
-            "--name",
-            "$(DASK_GATEWAY_WORKER_NAME)",
-            "--nthreads",
-            str(config.worker_threads),
-            "--memory-limit",
-            str(config.worker_memory_limit),
+            "--dashboard-address=:8787",
+            "--name=$(DASK_GATEWAY_WORKER_NAME)",
+            f"--nthreads={config.worker_threads}",
+            f"--memory-limit={config.worker_memory_limit}",
         ]
 
     def get_env(self, namespace, cluster_name, config):

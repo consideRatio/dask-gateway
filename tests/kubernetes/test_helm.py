@@ -23,7 +23,7 @@ def helm_install_dry_run(name, values):
     with tempfile.NamedTemporaryFile("w+", encoding="utf-8") as fil:
         fil.write(values)
         res = subprocess.run(
-            ["helm", "install", "--dry-run", name, CHART_PATH, "-f", fil.name],
+            ["helm", "install", "--dry-run", name, CHART_PATH, f"--values={fil.name}"],
             capture_output=True,
         )
         stdout = res.stdout.decode()

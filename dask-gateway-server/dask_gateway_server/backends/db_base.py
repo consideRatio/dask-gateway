@@ -1422,24 +1422,15 @@ class DBBackendBase(Backend):
 
     def get_scheduler_command(self, cluster):
         return cluster.config.scheduler_cmd + [
-            "--protocol",
-            "tls",
-            "--port",
-            "0",
-            "--host",
-            self.default_host,
-            "--dashboard-address",
-            f"{self.default_host}:0",
-            "--preload",
-            "dask_gateway.scheduler_preload",
-            "--dg-api-address",
-            f"{self.default_host}:0",
-            "--dg-heartbeat-period",
-            str(self.cluster_heartbeat_period),
-            "--dg-adaptive-period",
-            str(cluster.config.adaptive_period),
-            "--dg-idle-timeout",
-            str(cluster.config.idle_timeout),
+            "--protocol=tls",
+            "--port=0",
+            f"--host={self.default_host}",
+            f"--dashboard-address={self.default_host}:0",
+            "--preload=dask_gateway.scheduler_preload",
+            f"--dg-api-address={self.default_host}:0",
+            f"--dg-heartbeat-period={self.cluster_heartbeat_period}",
+            f"--dg-adaptive-period={cluster.config.adaptive_period}",
+            f"--dg-idle-timeout={cluster.config.idle_timeout}",
         ]
 
     def worker_nthreads_memory_limit_args(self, cluster):
@@ -1451,14 +1442,10 @@ class DBBackendBase(Backend):
             scheduler_address = cluster.scheduler_address
         return cluster.config.worker_cmd + [
             scheduler_address,
-            "--dashboard-address",
-            f"{self.default_host}:0",
-            "--name",
-            worker_name,
-            "--nthreads",
-            nthreads,
-            "--memory-limit",
-            memory_limit,
+            f"--dashboard-address={self.default_host}:0",
+            f"--name={worker_name}",
+            f"--nthreads={nthreads}",
+            f"--memory-limit={memory_limit}",
         ]
 
     # Subclasses should implement these methods

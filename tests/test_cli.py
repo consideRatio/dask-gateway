@@ -13,7 +13,7 @@ def test_generate_config(tmpdir, capfd):
         f.write(orig_text)
 
     with pytest.raises(SystemExit) as exc:
-        DaskGateway.launch_instance(["generate-config", "--output", cfg_file])
+        DaskGateway.launch_instance(["generate-config", f"--output={cfg_file}"])
     DaskGateway.clear_instance()
     assert "already exists" in exc.value.code
     out, err = capfd.readouterr()
@@ -25,7 +25,7 @@ def test_generate_config(tmpdir, capfd):
         cfg_text = f.read()
     assert cfg_text == orig_text
 
-    DaskGateway.launch_instance(["generate-config", "--force", "--output", cfg_file])
+    DaskGateway.launch_instance(["generate-config", "--force", f"--output={cfg_file}"])
     DaskGateway.clear_instance()
     out, err = capfd.readouterr()
     assert cfg_file in out
@@ -57,7 +57,7 @@ def test_proxy_cli(tmpdir, monkeypatch):
         called_with.extend(args)
 
     monkeypatch.setattr(os, "execle", mock_execle)
-    DaskGateway.launch_instance(["proxy", "-f", cfg_file, "--log-level", "warn"])
+    DaskGateway.launch_instance(["proxy", f"-f={cfg_file}", "--log-level=warn"])
     DaskGateway.clear_instance()
     ProxyApp.clear_instance()
 
@@ -67,14 +67,10 @@ def test_proxy_cli(tmpdir, monkeypatch):
     assert called_with == [
         _PROXY_EXE,
         "dask-gateway-proxy",
-        "-address",
-        "127.0.0.1:8866",
-        "-tcp-address",
-        "127.0.0.1:8867",
-        "-api-url",
-        "http://127.0.0.1:8888/api/v1/routes",
-        "-log-level",
-        "warn",
+        "-address=127.0.0.1:8866",
+        "-tcp-address=127.0.0.1:8867",
+        "-api-url=http://127.0.0.1:8888/api/v1/routes",
+        "-log-level=warn",
     ]
 
     assert "DASK_GATEWAY_PROXY_TOKEN" in env

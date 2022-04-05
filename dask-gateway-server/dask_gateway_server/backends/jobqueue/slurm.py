@@ -58,11 +58,11 @@ class SlurmBackend(JobQueueBackend):
         cmd = [self.submit_command, "--parsable"]
         cmd.append("--job-name=dask-gateway")
         if cluster.config.partition:
-            cmd.append("--partition=" + cluster.config.partition)
+            cmd.append(f"--partition={cluster.config.partition}")
         if cluster.config.account:
-            cmd.account("--account=" + cluster.config.account)
+            cmd.account(f"--account={cluster.config.account}")
         if cluster.config.qos:
-            cmd.extend("--qos=" + cluster.config.qos)
+            cmd.extend(f"--qos={cluster.config.qos}")
 
         if worker:
             cpus = cluster.config.worker_cores
@@ -93,11 +93,11 @@ class SlurmBackend(JobQueueBackend):
 
         cmd.extend(
             [
-                "--chdir=" + staging_dir,
-                "--output=" + os.path.join(staging_dir, log_file),
-                "--cpus-per-task=%d" % cpus,
-                "--mem=%s" % mem,
-                "--export=%s" % (",".join(sorted(env))),
+                f"--chdir={staging_dir}",
+                f"--output={os.path.join(staging_dir, log_file)}",
+                f"--cpus-per-task={cpus:d}",
+                f"--mem={mem}",
+                f"--export={','.join(sorted(env))}",
             ]
         )
 
