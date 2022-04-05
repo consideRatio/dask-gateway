@@ -11,6 +11,12 @@ with open(os.path.join(here, "dask_gateway", "_version.py")) as f:
 # in ../dev-environment.yaml
 install_requires = [
     "aiohttp",
+    # FIXME: click 8.0.4 works, but 8.1.0-8.1.2 has found to cause failures for
+    #        currently unknown reasons.
+    #
+    #        This is tracked in https://github.com/dask/dask-gateway/issues/522.
+    #
+    "click == 8.0.4",
     "dask >= 2.2.0",
     "distributed >= 2.2.0",
     "pyyaml",

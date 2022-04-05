@@ -13,6 +13,7 @@ dependencies:
   # - dask-gateway/setup.py
   # - dask-gateway-server/setup.py
   - aiohttp # dask-gateway, dask-gateway-server
+  - click # dask-gateway
   - dask # dask-gateway
   - distributed # dask-gateway
   - pyyaml # dask-gateway
