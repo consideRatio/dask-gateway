@@ -588,7 +588,7 @@ helm upgrade --install <span class="se">\</span>
 </div>
 <p>where:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">RELEASE</span></code> is the <a class="reference external" href="https://docs.helm.sh/glossary/#release">Helm release name</a> to use (we suggest <code class="docutils literal notranslate"><span class="pre">dask-gateway</span></code>,
+<li><p><code class="docutils literal notranslate"><span class="pre">RELEASE</span></code> is the <a class="reference external" href="https://helm.sh/docs/glossary/#release">Helm release name</a> to use (we suggest <code class="docutils literal notranslate"><span class="pre">dask-gateway</span></code>,
 but any release name is fine).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">NAMESPACE</span></code> is the <a class="reference external" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespace</a> to install the gateway into (we
 suggest <code class="docutils literal notranslate"><span class="pre">dask-gateway</span></code>, but any namespace is fine).</p></li>
@@ -649,7 +649,7 @@ empty list as you have no clusters running yet.</p>
 <h2>Shutting everything down<a class="headerlink" href="#shutting-everything-down" title="Permalink to this headline">¶</a></h2>
 <p>When you’re done with the gateway, you’ll want to delete your deployment and
 clean everything up. You can do this with <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">delete</span></code>:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm delete --purge <span class="nv">$RELEASE</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ helm delete <span class="nv">$RELEASE</span>
 </pre></div>
 </div>
 </div>
@@ -681,7 +681,7 @@ and develop your own.</p>
 </div>
 <div class="section" id="using-extrapodconfig-extracontainerconfig">
 <h3>Using <code class="docutils literal notranslate"><span class="pre">extraPodConfig</span></code>/<code class="docutils literal notranslate"><span class="pre">extraContainerConfig</span></code><a class="headerlink" href="#using-extrapodconfig-extracontainerconfig" title="Permalink to this headline">¶</a></h3>
-<p>The <a class="reference external" href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.15/">Kubernetes API</a> is large, and not all configuration fields you may want
+<p>The <a class="reference external" href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/">Kubernetes API</a> is large, and not all configuration fields you may want
 to set on scheduler/worker pods are directly exposed by the Helm chart. To
 address this, we provide a few fields for forwarding configuration directly to
 the underlying kubernetes objects:</p>
@@ -697,7 +697,7 @@ which is deep-merged with any settings set by dask-gateway itself (with
 preference given to the <code class="docutils literal notranslate"><span class="pre">extra*Config</span></code> values). Note that keys should be
 <code class="docutils literal notranslate"><span class="pre">camelCase</span></code> (rather than <code class="docutils literal notranslate"><span class="pre">snake_case</span></code>) to match those in the kubernetes
 API.</p>
-<p>For example, this can be useful for setting things like <a class="reference external" href="https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/">tolerations</a> or <a class="reference external" href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/">node
+<p>For example, this can be useful for setting things like <a class="reference external" href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">tolerations</a> or <a class="reference external" href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/">node
 affinities</a> on scheduler or worker pods. Here we configure a node
 anti-affinity for scheduler pods to avoid <a class="reference external" href="https://cloud.google.com/blog/products/containers-kubernetes/cutting-costs-with-google-kubernetes-engine-using-the-cluster-autoscaler-and-preemptible-vms">preemptible nodes</a>:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">gateway</span><span class="p">:</span><span class="w"></span>
@@ -715,8 +715,8 @@ anti-affinity for scheduler pods to avoid <a class="reference external" href="ht
 </div>
 <p>For information on allowed fields, see the Kubernetes documentation:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.15/#podspec-v1-core">PodSpec Configuration</a></p></li>
-<li><p><a class="reference external" href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.15/#container-v1-core">Container Configuration</a></p></li>
+<li><p><a class="reference external" href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#podspec-v1-core">PodSpec Configuration</a></p></li>
+<li><p><a class="reference external" href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core">Container Configuration</a></p></li>
 </ul>
 </div>
 <div class="section" id="using-extraconfig">
@@ -886,9 +886,9 @@ here for reference:</p>
 <span class="w">      </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"></span>
 
 <span class="w">  </span><span class="nt">livenessProbe</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="c1"># Enables the livenessProbe. </span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Enables the livenessProbe.</span><span class="w"></span>
 <span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">    </span><span class="c1"># Configures the livenessProbe. </span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Configures the livenessProbe.</span><span class="w"></span>
 <span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
 <span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
 <span class="w">    </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>

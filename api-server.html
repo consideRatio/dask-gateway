@@ -2049,7 +2049,7 @@ defaults to the current namespace. If not, defaults to <cite>default</cite></p>
 <dd><p>Any extra configuration for the scheduler container.</p>
 <p>This dict will be deep merged with the scheduler container (a
 <code class="docutils literal notranslate"><span class="pre">V1Container</span></code> object) before submission. Keys should match those in
-the <a class="reference external" href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.15/#container-v1-core">kubernetes spec</a>,
+the <a class="reference external" href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core">kubernetes spec</a>,
 and should be camelCase.</p>
 <p>See <code class="docutils literal notranslate"><span class="pre">worker_extra_container_config</span></code> for more information.</p>
 </dd></dl>
@@ -2072,7 +2072,7 @@ applied to user pods.</p>
 <dd><p>Any extra configuration for the scheduler pods.</p>
 <p>This dict will be deep merged with the scheduler pod spec (a
 <code class="docutils literal notranslate"><span class="pre">V1PodSpec</span></code> object) before submission. Keys should match those in the
-<a class="reference external" href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.15/#podspec-v1-core">kubernetes spec</a>,
+<a class="reference external" href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#podspec-v1-core">kubernetes spec</a>,
 and should be camelCase.</p>
 <p>See <code class="docutils literal notranslate"><span class="pre">worker_extra_pod_config</span></code> for more information.</p>
 </dd></dl>
@@ -2140,7 +2140,7 @@ following suffixes:</p>
 <dd><p>Any extra configuration for the worker container.</p>
 <p>This dict will be deep merged with the worker container (a
 <code class="docutils literal notranslate"><span class="pre">V1Container</span></code> object) before submission. Keys should match those in
-the <a class="reference external" href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.15/#container-v1-core">kubernetes spec</a>,
+the <a class="reference external" href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core">kubernetes spec</a>,
 and should be camelCase.</p>
 <p>For example, here we add environment variables from a secret to the
 worker container:</p>
@@ -2170,7 +2170,7 @@ applied to user pods.</p>
 <span class="sig-name descname"><span class="pre">worker_extra_pod_config</span></span><em class="property"><span class="w"> </span><span class="pre">c.KubeClusterConfig.worker_extra_pod_config</span> <span class="pre">=</span> <span class="pre">Dict()</span></em><a class="headerlink" href="#dask_gateway_server.backends.kubernetes.KubeClusterConfig.worker_extra_pod_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Any extra configuration for the worker pods.</p>
 <p>This dict will be deep merged with the worker pod spec (a <code class="docutils literal notranslate"><span class="pre">V1PodSpec</span></code>
-object) before submission. Keys should match those in the <a class="reference external" href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.15/#podspec-v1-core">kubernetes
+object) before submission. Keys should match those in the <a class="reference external" href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#podspec-v1-core">kubernetes
 spec</a>,
 and should be camelCase.</p>
 <p>For example, here we add a toleration to worker pods.</p>

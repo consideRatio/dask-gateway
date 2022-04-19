@@ -496,10 +496,10 @@
   <div class="section" id="install-on-an-hpc-job-queue">
 <h1>Install on an HPC Job Queue<a class="headerlink" href="#install-on-an-hpc-job-queue" title="Permalink to this headline">¶</a></h1>
 <p>Here we provide instructions for installing and configuring
-<code class="docutils literal notranslate"><span class="pre">dask-gateway-server</span></code> on a HPC Job Queue system like <a class="reference external" href="https://www.pbspro.org/">PBS</a> or <a class="reference external" href="https://slurm.schedmd.com/">Slurm</a>. Note
+<code class="docutils literal notranslate"><span class="pre">dask-gateway-server</span></code> on a HPC Job Queue system like <a class="reference external" href="ttps://www.openpbs.org/">PBS</a> or <a class="reference external" href="https://slurm.schedmd.com/">Slurm</a>. Note
 that <code class="docutils literal notranslate"><span class="pre">dask-gateway-server</span></code> only needs to be installed on one node (typically
 an edge node).</p>
-<p>Currently only <a class="reference external" href="https://www.pbspro.org/">PBS</a> and <a class="reference external" href="https://slurm.schedmd.com/">Slurm</a> are supported, but support for additional
+<p>Currently only <a class="reference external" href="ttps://www.openpbs.org/">PBS</a> and <a class="reference external" href="https://slurm.schedmd.com/">Slurm</a> are supported, but support for additional
 backends is planned. If this is something you’re interested in, please <a class="reference external" href="https://github.com/dask/dask-gateway/issues">file an
 issue</a>.</p>
 <div class="section" id="create-a-user-account">
@@ -574,12 +574,12 @@ sudo-executed as them for permissions to be transferred appropriately.</p>
 dask ALL=(%dask_users,!root) NOPASSWD:DASK_GATEWAY_JOBQUEUE_LAUNCHER
 </pre></div>
 </div>
-<p>Additionaly, when using <a class="reference external" href="https://www.pbspro.org/">PBS</a> you’ll need to make the <code class="docutils literal notranslate"><span class="pre">dask</span></code> user a PBS
+<p>Additionaly, when using <a class="reference external" href="ttps://www.openpbs.org/">PBS</a> you’ll need to make the <code class="docutils literal notranslate"><span class="pre">dask</span></code> user a PBS
 Operator:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ qmgr -c <span class="s2">&quot;set server operators += dask@pbs&quot;</span>
 </pre></div>
 </div>
-<p>Operator level permissions are needed in <a class="reference external" href="https://www.pbspro.org/">PBS</a> to allow <code class="docutils literal notranslate"><span class="pre">dask-gateway-server</span></code>
+<p>Operator level permissions are needed in <a class="reference external" href="ttps://www.openpbs.org/">PBS</a> to allow <code class="docutils literal notranslate"><span class="pre">dask-gateway-server</span></code>
 to more efficiently track the status of all users’ jobs.</p>
 </div>
 <div class="section" id="configure-dask-gateway-server">

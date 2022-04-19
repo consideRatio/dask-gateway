@@ -710,13 +710,13 @@ installing anything throughout the cluster, and allows for centrally managing
 user’s Python environments.</p>
 <p>Packaging environments for distribution is usually accomplished using</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://conda.github.io/conda-pack/">conda-pack</a> for <a class="reference external" href="http://conda.io/">conda</a> environments</p></li>
+<li><p><a class="reference external" href="https://conda.github.io/conda-pack/">conda-pack</a> for <a class="reference external" href="https://docs.conda.io/">conda</a> environments</p></li>
 <li><p><a class="reference external" href="https://jcristharif.com/venv-pack/">venv-pack</a>  for virtual environments (both <a class="reference external" href="https://virtualenv.pypa.io/en/stable/">venv</a> and <a class="reference external" href="https://virtualenv.pypa.io/en/stable/">virtualenv</a> supported)</p></li>
 </ul>
 <p>Both are tools for taking an environment and creating an archive of it in a way
 that (most) absolute paths in any libraries or scripts are altered to be
 relocatable. This archive then can be distributed with your application, and
-will be automatically extracted during <a class="reference external" href="https://hortonworks.com/blog/resource-localization-in-yarn-deep-dive/">YARN resource localization</a></p>
+will be automatically extracted during <a class="reference external" href="https://blog.cloudera.com/resource-localization-in-yarn-deep-dive/">YARN resource localization</a></p>
 <p>Below we demonstrate creating and packaging a Conda environment containing
 <code class="docutils literal notranslate"><span class="pre">dask-gateway</span></code>, as well as <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>. Additional
 packages could be added as needed.</p>
