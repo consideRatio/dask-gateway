@@ -54,7 +54,7 @@ jobs:
         if: steps.local.outputs.version != steps.latest.outputs.version
         uses: peter-evans/create-pull-request@4.0.4
         with:
-          token: "${{ secrets.dask_bot_token }}"
+          token: "${{ secrets.github_token }}"
           author: Dask Bot Account <65357765+dask-bot@users.noreply.github.com>
           committer: Dask Bot Account <65357765+dask-bot@users.noreply.github.com>
           branch: update-image-${{ matrix.image }}
