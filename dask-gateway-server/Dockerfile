@@ -34,9 +34,8 @@ WORKDIR /home/dask/
 # Traefik as a proxy instead to run in its dedicated pod.
 #
 COPY --chown=dask:dask . /srv/dask-gateway-server
-
 RUN DASK_GATEWAY_SERVER__NO_PROXY=true pip install --no-cache-dir \
-        "/srv/dask-gateway-server[kubernetes]"
+        -r /srv/dask-gateway-server/Dockerfile.requirements.txt
 
 ENTRYPOINT ["tini", "-g", "--"]
 CMD ["dask-gateway-server", "--config", "/etc/dask-gateway/dask_gateway_config.py"]
