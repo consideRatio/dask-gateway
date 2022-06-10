@@ -51,7 +51,6 @@ jobs:
 
       # ref: https://github.com/peter-evans/create-pull-request
       - name: Create a PR
-        if: steps.local.outputs.version != steps.latest.outputs.version
         uses: peter-evans/create-pull-request@v4
         with:
           token: "${{ secrets.github_token }}"
